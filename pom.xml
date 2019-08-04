@@ -7,7 +7,7 @@
     <groupId>com.zhangpingyang</groupId>
     <artifactId>suanfa</artifactId>
     <version>1.0</version>
-
+    <packaging>jar</packaging>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/edu.princeton.cs/algs4 -->
         <dependency>
@@ -21,6 +21,26 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.9</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.9.3</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>5.1.7.RELEASE</version>
+        </dependency>
+
+
 
     </dependencies>
     <build>
@@ -33,6 +53,7 @@
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
-            </plugin></plugins>
+            </plugin>
+        </plugins>
     </build>
 </project>
