@@ -44,4 +44,16 @@ public class Utils {
         }
         return -1;
     }
+    public static boolean less(Comparable v, Comparable w) {
+        boolean b = v.compareTo(w) < 0;
+//        System.out.println(v +" < "+w+" ?");
+//        System.out.println(b);
+        return b;
+    }
+
+    public static void exch(Comparable[] arr, int index1, int index2) {
+        Comparable a = arr[index1];
+        arr[index1] = arr[index2];
+        arr[index2] = a;
+    }
 }
