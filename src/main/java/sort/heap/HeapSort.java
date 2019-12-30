@@ -1,5 +1,7 @@
 package sort.heap;
 
+import edu.princeton.cs.algs4.Heap;
+import javafx.scene.chart.Chart;
 import main.Javac;
 import sun.security.util.Length;
 
@@ -7,23 +9,23 @@ import java.util.Arrays;
 
 public class HeapSort {
     /**
-     *          S
-     *        O       R
-     *      T    E   X  A
-     *     M P  L  E
-     *
-     *     构造一个大顶堆， 然后对堆进行排序
-      */
+     * S
+     * O       R
+     * T    E   X  A
+     * M P  L  E
+     * <p>
+     * 构造一个大顶堆， 然后对堆进行排序
+     */
     public static void main(String[] args) {
-        char[] chars = "1SORTEXAMPLE".toCharArray();
+        char[] chars = "SORTEXAMPLE".toCharArray();
         heapSort(chars);
         System.out.println(Arrays.toString(chars));
     }
 
     public static void heapSort(char[] arr) {
-        int N = arr.length - 1;
-        for (int i = N / 2; i >= 1; i--) {
-            sink(arr, i, N);
+        int N = arr.length;
+        for (int k = N / 2; k >= 1; k--) {
+            sink(arr, k, N);
         }
         while (N > 1) {
             exch(arr, 1, N--);
@@ -49,17 +51,12 @@ public class HeapSort {
     }
 
     public static boolean less(char[] arr, int i, int j) {
-        try {
-            return arr[i] < arr[j];
-        } catch (Exception e) {
-            System.out.println(i + " " + j);
-            throw e;
-        }
+        return arr[i - 1] < arr[j - 1];
     }
 
     public static void exch(char[] arr, int i, int j) {
-        char c = arr[i];
-        arr[i] = arr[j];
-        arr[j] = c;
+        char c = arr[i-1];
+        arr[i-1] = arr[j-1];
+        arr[j-1] = c;
     }
 }
