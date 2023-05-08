@@ -12,6 +12,7 @@ import edu.princeton.cs.algs4.StdRandom;
 import vo.Drawing;
 
 public class Demo02 {
+
     @Test
     public void test7() {
         countTest(5);

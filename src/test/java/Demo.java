@@ -1,14 +1,13 @@
-import com.sun.istack.internal.NotNull;
-
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.lang3.ClassUtils;
 import org.junit.Test;
 
 import java.lang.reflect.InvocationTargetException;
+import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import edu.princeton.cs.algs4.Counter;
-import edu.princeton.cs.algs4.Date;
 import edu.princeton.cs.algs4.Interval1D;
 import edu.princeton.cs.algs4.Interval2D;
 import edu.princeton.cs.algs4.Point2D;
@@ -233,5 +232,353 @@ public class Demo {
     public void test7() {
 //        BeanUtils.copyProperties();
 //        BeanUtils.copyProperties();
+    }
+    /*2023 */
+    @Test
+    public void test202301() {
+        double v = 2.0e-6 * 100000000.1;
+        System.out.println(v);
+        double v1 = (1 + 2.236) / 2;
+        System.out.println(v1);
+        if (4.1 >= 4) {
+
+        }
+    }
+
+    /**
+     * 第一张里纳西1.15
+     */
+    public static void main(String[] args) {
+        if (Double.parseDouble(args[0]) == Double.parseDouble(args[1]) && Double.parseDouble(args[1]) == Double.parseDouble(args[2])) {
+            System.out.println("equal");
+        } else {
+            System.out.println("not equal");
+        }
+    }
+
+    @Test
+    public void test116() {
+        int f = 0, g = 1;
+        for (int i = 0; i < 16; i++) {
+            System.out.println(f + " " + g);
+            f = f + g;
+            g = f - g;
+        }
+        //      f=0 g=1
+        //i==0  f=1 g=0
+        //i==1  f=1 g=1
+        //i==2  f=2 g=1
+        //i==3  f=3 g=2
+        //i==4  f=5 g=3
+        //i==5  f=8 g=5
+        //i==6  f=13 g=8
+    }
+
+    @Test
+    public void Test117a() {
+        double t = 9.0D;
+        while (Math.abs(t - 9.0 / t) > 0.001) {
+            t = (9.0 / t + t) / 2.0;
+            System.out.println(t);
+        }
+        System.out.println("---------");
+        System.out.printf("%.5f", t);
+    }
+
+    @Test
+    public void test117b() {
+        int sum = 0;
+        for (int i = 1; i < 1000; i++) {//执行999次  1-999
+            for (int j = 0; j < i; j++) {
+                //第一次 i = 1 执行1次
+                //第二次 i = 2 执行2次
+                //第三次 i = 3 执行3次
+                //第N次 i = N 执行 N次
+                /*内循环次数为 1 + 2 + 3 + ... + N
+                N = 999
+                等差数列求解
+                N * a1 + N(N-1)d/2
+                999 * 1 + 999(998)*1/2 = 499500
+                */
+
+                sum++;
+            }
+
+        }
+        System.out.println(sum);
+    }
+
+    @Test
+    public void test117c() {
+        int sum = 0;
+        for (int i = 1; i < 1000; i *= 2) {//1 2 4 8 16 32 64 128 256 512
+            for (int j = 0; j < 1000; j++) {
+                sum++;
+            }
+        }
+        System.out.println(sum);//10000
+        //上面的姐
+        int count = 0;
+        int i = 0b1;
+        while (i < 1000) {
+            i = i << 1;
+            count++;
+        }
+        System.out.println(count);
+    }
+
+    @Test
+    public void test118() {
+        System.out.println('b');//b
+        System.out.println('b' + 'c');//197
+        System.out.println(((char)('a' + 4)));//a b c d e 所以结果是e
+    }
+    @Test
+    public void test119(){
+        int a = 118;
+        System.out.println(toBinaryString(a));
+        System.out.println(toCustomBinarySearch(a, 2));
+        System.out.println(toCustomBinarySearch(a, 8));
+        System.out.println(toCustomBinarySearch(a, 16));
+
+    }
+
+    public String toBinaryString(int n) {
+        //写一段代码 将正整数（十进制）用二进制表示
+        String s = "";
+        for (int i = n; i > 0; i /= 2) {
+            s = (i % 2) + s;
+        }
+        return s;
+    }
+
+    public String toCustomBinarySearch(int n, int jinzhi) {
+        String s = "";
+
+        do {
+            int result = n % jinzhi;
+            s = result + s;
+            n = n / jinzhi;
+        } while (n != 0);
+        return s;
+    }
+
+    @Test
+    public void test1112() {
+        int[] a = new int[10];
+        for (int i = 0; i < 10; i++) {
+            a[i] = 9 - i;
+        }
+        System.out.println(Arrays.toString(a));
+        for (int i = 0; i < 10; i++) {
+            a[i] = a[a[i]];
+        }
+        System.out.println(Arrays.toString(a));
+    }
+
+    @Test
+    public void test1113() {
+        //打编写一段代码， 打印出一个M行N列的二维数组转换装置(交换行和列）
+        //1 2 3 4 5 6 7
+        //1 2 3 4 5 6 7
+        //转换为
+        //1 1
+        //2 2
+        //3 3
+        //4 4
+        int[][] ints = new int[][]{{1, 2, 3}, {1, 2, 3}};
+        System.out.println(Arrays.toString(ints));
+        int[][] ints1 = swap2DArr(ints);
+        System.out.println(Arrays.toString(ints1));
+
+    }
+
+    public int[][] swap2DArr(int[][] arr) {
+        int[][] reArr = new int[arr[0].length][arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[0].length; j++) {
+                //i = 0, j = 0，1，2，3 遍历原数组
+                reArr[j][i] = arr[i][j];
+            }
+        }
+        return reArr;
+    }
+    @Test
+    public void test1114(){
+        //编写一个静态方法lg() 参数为int 返回不大于 log2N 的最大整数
+        for (int i = 0; i < 10000; i++) {
+            System.out.println(i + " " + lg(i));
+        }
+    }
+
+    public static int lg(int N) {
+        //log2N = 2 * 2 * 2... N
+        //表示 2 的多少次方等于N     参数    返回值
+        //log 2 0 不存在            0       Na
+        //log 2 1 = 0              1       0
+        //log 2 2 = 1              2       1
+        //log 2 3 = 1 < x < 2      3       1
+        //log 2 4 = 2              4       2
+        //log 2 5 = 2 < x < 3      5       2
+        //log 2 6 = 2 < x < 3      6       2
+        //log 2 7 = 2 < x < 3      7       2
+        //log 2 8 = 3              8       3
+        int logInt = 0;
+        while (N > 0) {
+            logInt++;
+            N /= 2;
+        }
+        return --logInt;
+    }
+
+
+    @Test
+    public void test1115() {
+        //编写一个静态方法histogram() 接收一个a[]参数 和一个int M 返回一个大小为M的数组
+        //其中第i个元素的值为整数i在数组中出现的次数，如果a[] 中的值均为0到M-1之间， 返回数组中所有元之和应该和a.length相等。
+        int[] arr = {1, 1, 1, 3, 3, 3, 3, 2, 5, 5, 5, 5};
+        int[] histogram = histogram(arr, arr.length);
+        int[] histogram1 = histogram1(arr, arr.length);
+        System.out.println(Arrays.toString(histogram));
+        System.out.println(Arrays.toString(histogram1));
+    }
+    public static int[] histogram(int[] a, int M) {
+        int[] arr = new int[M];
+        for (int i = 0; i < M; i++) {
+            for (int j = 0; j <a.length; j++) {
+                if (i == a[j]) {
+                    arr[i] += 1;
+                }
+            }
+        }
+        return arr;
+
+    }
+    private static int[] histogram1(int[] a, int m) {
+        int[] newArr = new int[m];
+
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] < m) {
+                newArr[a[i]]++;
+            }
+        }
+        return newArr;
+    }
+
+    @Test
+    public void test1116() {
+        String str = exR1(6);
+        System.out.println(str);
+        System.out.println(count);
+        //1 exR1(6 - 3)                                                                                          + 6 + exR1(6 - 2) + n;
+        //2 exR1(3 - 3)                             + 3 + exR1(3 - 2) + 3;
+        //2 exR1(0 - 3) + 0 + exR1(0 - 2) + 0 结果为""+0+""+0
+
+    }
+
+    private static int count = 0;
+    public static String exR1(int n) {
+        if (n <= 0) {
+            return "";
+        }
+        count++;
+        return exR1(n - 3) + n + exR1(n - 2) + n;
+    }
+
+    @Test
+    public void test1118() {
+        System.out.println(mystery(2, 25));
+        System.out.println(mystery(3, 11));
+        System.out.println(mystery1(2, 25));
+        System.out.println(mystery1(3, 11));
+    }
+
+    public static int mystery(int a, int b) {
+        if (b == 0) {
+            return 0;
+        }
+        if (b % 2 == 0) {
+            return mystery(a + a, b / 2);
+        }
+        return mystery(a + a, b / 2) + a;
+    }
+    public static long mystery1(long a, long b) {
+        if (b == 0) {
+            return 1L;
+        }
+        if (b % 2 == 0) {
+            return mystery1(a * a, b / 2L);
+        }
+        return mystery1(a * a, b / 2L) * a;
+    }
+
+    @Test
+    public void test1119() {
+//        for (int i = 0; i < 100; i++) {
+//            StdOut.println(i + " "+F(i));
+//        }
+            int N=20;
+            long [] a=new long[N];
+            a[0]=0;
+            a[1]=1;
+            for (int i = 2; i <N ; i++)
+            {
+                a[i]=a[i-1]+a[i-2];
+            }
+            for (int i = 0; i <N ; i++)
+            {
+                System.out.println(i+" "+a[i]);
+            }
+    }
+
+    public static long F(int N) {
+        if (N == 0) return 0;
+        if (N == 1) return 1;
+        return F(N - 1) + F(N - 2);
+    }
+
+    public static long F_fast(int N) {
+        /*
+            0 0
+            1 1
+            2 1
+            3 2
+            4 3
+            5 5
+            6 8
+            7 13
+            8 21
+            9 34
+        * */
+        return N - 2;
+    }
+
+    @Test
+    public void test1120() {
+        System.out.println(factorial(101111));
+    }
+    @Test
+    public void test1120A() {
+        BigInteger num = BigInteger.ONE;
+
+        for (int i = 1; i <= 101111; i++) {
+            num = num.multiply(BigInteger.valueOf(i));
+        }
+
+        System.out.println(num);
+        System.out.println("===================================================================");
+        System.out.println("===================================================================");
+        System.out.println("===================================================================");
+        System.out.println("===================================================================");
+        System.out.println("===================================================================");
+        System.out.println(num.toString().length());
+    }
+
+    public long factorial(long N) {
+
+        if (N == 1 || N == 0) {
+            return 1;
+        }
+        return N * factorial(N - 1);
     }
 }
